@@ -20,12 +20,12 @@ class DailogItem(context: Context, var addDalogListener: DalogListener) : AppCom
 
         binding.addtxt.setOnClickListener {
             val name =binding.itemName.toString()
-            val amount = binding.etamount.toString()
-            if(name.isEmpty() || amount.isEmpty()){
+            val amount = binding.etamount.toString().toInt()
+            if(name.isEmpty() ){
                 Toast.makeText(context,"Please enter all the fields", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            val item = ShoppingItem(name, amount.toInt())
+            val item = ShoppingItem(name,amount)
             addDalogListener.addButtonClicked(item)
             dismiss()
 
